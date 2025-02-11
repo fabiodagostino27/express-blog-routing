@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+const routerPosts = require("./routers/posts");
 
 app.use(express.static('public'));
 
@@ -43,7 +44,9 @@ app.get("/bacheca", (req, res) => {
     ];
 
     res.json(posts)
-})
+});
+
+app.use("/posts", routerPosts);
 
 app.listen(port, () => {
     console.log(`Example app listening on port ${port}`)
